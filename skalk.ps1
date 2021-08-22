@@ -51,7 +51,7 @@ $count2=0
 foreach ($row in $rows) {
     $count++
     $count2++
-    if($count -eq 10){
+    if($count -eq 1000){
         break
     }
     if ($count % 4-eq 0){
@@ -61,7 +61,7 @@ foreach ($row in $rows) {
     "<div style='display:flex; flex-direction: row; border:10px;' id='div'>" | Out-File '.\file.html' -Append
         "<td ><div style='width:200px; height:200px'><img style='width:200px; height:200px'  id='image' src='"+$row[1]+"'></div></td>"  | Out-File '.\file.html' -Append 
         "<td ><div style='width:200px; height:200px; display:flex; flex-direction:column; display:block;'>" | Out-File '.\file.html' -Append
-                "<p id='title'>"+$row[2]+"</p>"  | Out-File '.\file.html' -Append 
+                "<p style='font-weight: bold;' id='title'>"+$row[2]+"</p>"  | Out-File '.\file.html' -Append 
                 "<p id='isbn'>"+$row[0]+"</p>"  | Out-File '.\file.html' -Append 
                 "<p id='m_price'>"+$row[3]+"</p>"  | Out-File '.\file.html' -Append 
                 "<p id='price'>"+$row[4]+"</p>"  | Out-File '.\file.html' -Append 
