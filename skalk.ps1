@@ -40,34 +40,34 @@ $beginning=
 <head>
 <title>Skalk</title>
 <style>
-body {
-    
-}
 </style>
 </head>
 <body>
 <table id='table'>
 "@
 $beginning |Out-File '.\file.html' -Append 
-$count = 0
+$count = -1
+$count2=0
 foreach ($row in $rows) {
     $count++
-    if($count -eq 30){
+    $count2++
+    if($count -eq 10){
         break
     }
     if ($count % 4-eq 0){
-        "<tr>" | Out-File '.\file.html' -Append
+        "<tr >" | Out-File '.\file.html' -Append
     }
-    "<div style=';display:flex; flex-direction: row; border:1px;' id='div'>" | Out-File '.\file.html' -Append
-        "<td><img style='width:100%; height: 100%' id='image' src='"+$row[1]+"'></td>"  | Out-File '.\file.html' -Append 
-        "<td><div style='display:flex; flex-direction:column;'>" | Out-File '.\file.html' -Append
-            "<h3 id='title'>"+$row[2]+"</h3>"  | Out-File '.\file.html' -Append 
-            "<p id='isbn'>"+$row[0]+"</p>"  | Out-File '.\file.html' -Append 
-            "<p id='m_price'>"+$row[3]+"</p>"  | Out-File '.\file.html' -Append 
-            "<p id='price'>"+$row[4]+"</p>"  | Out-File '.\file.html' -Append 
-        "</div></td>" | Out-File '.\file.html' -Append
+    # style='width:200px; height:200px'
+    "<div style='display:flex; flex-direction: row; border:10px;' id='div'>" | Out-File '.\file.html' -Append
+        "<td ><div style='width:200px; height:200px'><img style='width:200px; height:200px'  id='image' src='"+$row[1]+"'></div></td>"  | Out-File '.\file.html' -Append 
+        "<td ><div style='width:200px; height:200px; display:flex; flex-direction:column; display:block;'>" | Out-File '.\file.html' -Append
+                "<p id='title'>"+$row[2]+"</p>"  | Out-File '.\file.html' -Append 
+                "<p id='isbn'>"+$row[0]+"</p>"  | Out-File '.\file.html' -Append 
+                "<p id='m_price'>"+$row[3]+"</p>"  | Out-File '.\file.html' -Append 
+                "<p id='price'>"+$row[4]+"</p>"  | Out-File '.\file.html' -Append 
+            "</div></td>" | Out-File '.\file.html' -Append
     "</div>" | Out-File '.\file.html' -Append 
-    if ($count % 4-eq 0){
+    if ($count2 % 4 -eq 0){
         "</tr>" | Out-File '.\file.html' -Append
     }
 }
