@@ -39,26 +39,37 @@ $beginning=
 <html>
 <head>
 <title>Skalk</title>
+<style>
+body {
+    
+}
+</style>
 </head>
 <body>
-<table id='table' style='width:100%'>
+<table id='table'>
 "@
 $beginning |Out-File '.\file.html' -Append 
 $count = 0
 foreach ($row in $rows) {
     $count++
-    if($count -eq 5){
+    if($count -eq 30){
         break
     }
-    "<div id='div'>" | Out-File '.\file.html' -Append 
-    "<tr>" | Out-File '.\file.html' -Append 
-        "<td><h3 id='title'>"+$row[2]+"</h3></td>"  | Out-File '.\file.html' -Append 
-        "<td><img id='image' src='"+$row[1]+"'></td>"  | Out-File '.\file.html' -Append 
-        "<td><p id='isbn'>"+$row[0]+"</p></td>"  | Out-File '.\file.html' -Append 
-        "<td><p id='m_price'>"+$row[3]+"</p></td>"  | Out-File '.\file.html' -Append 
-        "<td><p id='price'>"+$row[4]+"</p></td>"  | Out-File '.\file.html' -Append 
-    "</tr>" | Out-File '.\file.html' -Append 
+    if ($count % 4-eq 0){
+        "<tr>" | Out-File '.\file.html' -Append
+    }
+    "<div style=';display:flex; flex-direction: row; border:1px;' id='div'>" | Out-File '.\file.html' -Append
+        "<td><img style='width:100%; height: 100%' id='image' src='"+$row[1]+"'></td>"  | Out-File '.\file.html' -Append 
+        "<td><div style='display:flex; flex-direction:column;'>" | Out-File '.\file.html' -Append
+            "<h3 id='title'>"+$row[2]+"</h3>"  | Out-File '.\file.html' -Append 
+            "<p id='isbn'>"+$row[0]+"</p>"  | Out-File '.\file.html' -Append 
+            "<p id='m_price'>"+$row[3]+"</p>"  | Out-File '.\file.html' -Append 
+            "<p id='price'>"+$row[4]+"</p>"  | Out-File '.\file.html' -Append 
+        "</div></td>" | Out-File '.\file.html' -Append
     "</div>" | Out-File '.\file.html' -Append 
+    if ($count % 4-eq 0){
+        "</tr>" | Out-File '.\file.html' -Append
+    }
 }
 $ending=
 @"
