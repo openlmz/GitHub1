@@ -1,6 +1,7 @@
 import csv
 
-filename = "skalk1.csv"
+filename =r"C:\Users\yoga9\OneDrive\Documents\GitHub\Skalk\SkalkData\webscraper\skalk1.csv" 
+# filename =r"C:\Users\yoga9\OneDrive\Documents\GitHub\Skalk\SkalkData\webscraper\skalk_webscraper_2.csv" 
 
 fields = []
 rows = []
